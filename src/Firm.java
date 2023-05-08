@@ -9,7 +9,7 @@ public class Firm {
     private int id;
     private int duty;
 
-    public Firm( int id,String firmName, String fieldOfActivity, int duty) {
+    public Firm(int id, String firmName, String fieldOfActivity, int duty) {
         this.id = id;
         this.FirmName = firmName;
         this.fieldOfActivity = fieldOfActivity;
@@ -40,7 +40,7 @@ public class Firm {
         this.id = id;
     }
 
-    public  int getDuty() {
+    public int getDuty() {
         return duty;
     }
 

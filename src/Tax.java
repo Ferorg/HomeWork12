@@ -3,11 +3,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tax {
-private Map<String, Collection<Firm>> tax = new HashMap<>();
+    private Map<String, Collection<Firm>> tax = new HashMap<>();
 
     public Tax() {
 
-}
+    }
 
     @Override
     public String toString() {

@@ -1,7 +1,6 @@
 import java.util.*;
 
 
-
 public class Main {
     public static void main(String[] args) {
         List<Firm> listFirmNot = new ArrayList<>();
@@ -33,46 +32,47 @@ public class Main {
         tax.put("долг до 10000", listFirmDolgDo);
         tax.put("долг более 10000", listFirmDolgbolee);
         System.out.println(tax.toString());
-        transfer( listFirmNot,listFirmDolgDo,listFirmDolgbolee);
+        transfer(listFirmNot, listFirmDolgDo, listFirmDolgbolee);
         System.out.println(tax.toString());
 
     }
+
     //метод который сортирует фирмы в зависимости от долга перед налоговой
-        public static void transfer( List<Firm> listFirmNot,List<Firm> listFirmDolgDo,List<Firm> listFirmDolgbolee){
-            for(int i=0;i<listFirmNot.size();i++){
-                if(listFirmNot.get(i).getDuty()>0 && listFirmNot.get(i).getDuty()<=10000){
-                    listFirmDolgDo.add(listFirmNot.get(i));
-                    listFirmNot.remove(listFirmNot.get(i));
-                    i--;
-                } else if (listFirmNot.get(i).getDuty()>10000) {
-                    listFirmDolgbolee.add(listFirmNot.get(i));
-                    listFirmNot.remove(listFirmNot.get(i));
-                    i--;
-                }
+    public static void transfer(List<Firm> listFirmNot, List<Firm> listFirmDolgDo, List<Firm> listFirmDolgbolee) {
+        for (int i = 0; i < listFirmNot.size(); i++) {
+            if (listFirmNot.get(i).getDuty() > 0 && listFirmNot.get(i).getDuty() <= 10000) {
+                listFirmDolgDo.add(listFirmNot.get(i));
+                listFirmNot.remove(listFirmNot.get(i));
+                i--;
+            } else if (listFirmNot.get(i).getDuty() > 10000) {
+                listFirmDolgbolee.add(listFirmNot.get(i));
+                listFirmNot.remove(listFirmNot.get(i));
+                i--;
             }
-            for(int i=0;i<listFirmDolgDo.size();i++){
-                if(listFirmDolgDo.get(i).getDuty()==0){
-                    listFirmNot.add(listFirmDolgDo.get(i));
-                    listFirmDolgDo.remove(listFirmDolgDo.get(i));
-                    i--;
-                } else if (listFirmDolgDo.get(i).getDuty()>10000) {
-                    listFirmDolgbolee.add(listFirmDolgDo.get(i));
-                    listFirmDolgDo.remove(listFirmDolgDo.get(i));
-                    i--;
-                }
+        }
+        for (int i = 0; i < listFirmDolgDo.size(); i++) {
+            if (listFirmDolgDo.get(i).getDuty() == 0) {
+                listFirmNot.add(listFirmDolgDo.get(i));
+                listFirmDolgDo.remove(listFirmDolgDo.get(i));
+                i--;
+            } else if (listFirmDolgDo.get(i).getDuty() > 10000) {
+                listFirmDolgbolee.add(listFirmDolgDo.get(i));
+                listFirmDolgDo.remove(listFirmDolgDo.get(i));
+                i--;
             }
-            for(int i=0;i<listFirmDolgbolee.size();i++){
-                if(listFirmDolgbolee.get(i).getDuty()==0){
-                    listFirmNot.add(listFirmDolgbolee.get(i));
-                    listFirmDolgbolee.remove(listFirmDolgbolee.get(i));
-                    i--;
-                } else if (listFirmDolgbolee.get(i).getDuty()>0 && listFirmDolgbolee.get(i).getDuty()<=10000) {
-                    listFirmDolgDo.add(listFirmDolgbolee.get(i));
-                    listFirmDolgbolee.remove(listFirmDolgbolee.get(i));
-                    i--;
-                }
+        }
+        for (int i = 0; i < listFirmDolgbolee.size(); i++) {
+            if (listFirmDolgbolee.get(i).getDuty() == 0) {
+                listFirmNot.add(listFirmDolgbolee.get(i));
+                listFirmDolgbolee.remove(listFirmDolgbolee.get(i));
+                i--;
+            } else if (listFirmDolgbolee.get(i).getDuty() > 0 && listFirmDolgbolee.get(i).getDuty() <= 10000) {
+                listFirmDolgDo.add(listFirmDolgbolee.get(i));
+                listFirmDolgbolee.remove(listFirmDolgbolee.get(i));
+                i--;
             }
+        }
     }
 
-    }
+}
 
